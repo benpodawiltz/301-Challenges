@@ -1,0 +1,42 @@
+##!/bin/bash
+#
+# Author:  Ben_Podawiltz
+#
+# Revision:  4.20.21
+#########################
+
+# Purpose:  
+# Copies /var/log/syslog to the current working directory
+# Appends the current date and time to the filename
+
+################################################
+
+# Globals:
+_date=$(date +"%d-%m-%Y_%H-%M-%S")
+
+#Fixed some syntax issues with the above variable. Did not have correct string assigment in double quotes
+#################################################
+# Functions:
+copy_sys (){
+
+    cp /var/log/syslog .         #copies syslog to current working directory
+    cp syslog  syslog$_date.txt          #moves file into new file.txt and appends date
+    echo "Copying syslog files to current working directory..."  #user interface
+    echo "****************************************************"
+    echo "Appending date and time to syslog.txt...."  #user interface
+    echo "***************************************************"
+
+    
+}
+
+
+#####################
+#Call Functions
+
+copy_sys
+
+## End
+
+######################################################
+#Source:[https://stackoverflow.com/questions/49851882/how-to-log-echo-statement-with-timestamp-in-shell-script]
+#Source:[https://www.cyberciti.biz/faq/unix-linux-appleosx-bsd-shell-appending-date-to-filename/]
