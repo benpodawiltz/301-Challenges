@@ -43,6 +43,7 @@ perm_setting () {
     fi
 }
 
+perm_setting
 ####################################
 
 echo -e "\nNavigating to $dir_path"
@@ -51,11 +52,6 @@ cd $dir_path
 ls -la  #this command is listing the previous run output (?)
 
 ###################################
-
-# Call the function
-
-perm_setting
-####################################
 
 # Comment: 
 # I could not get the sub directory to change permissions despite using the arguement -R after
