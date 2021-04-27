@@ -70,6 +70,9 @@ run_process
 
 # Summary:
 
-# I tried a couple different methods to build the script including an attempt to use until-do-done which did not initially work as I assigned until the condition of (( $numb >= 4)) to exit but it ran in a continous loop without pause for input. I would like to add additional ip tools to the #3 option. This script has a lot of potential for expansion. It would be cool to figure out how to have the user input sudo to add to tools built into the script.
+# I tried a couple different methods to build the script including an attempt to use until-do-done which did not initially work as I assigned 
+#until the condition of (( $numb >= 4)) to exit but it ran in a continous loop without pause for input. I would like to add additional 
+#ip tools to the #3 option. This script has a lot of potential for expansion. 
+#It would be cool to figure out how to have the user input sudo to add to tools built into the script.
 # 
 # End
