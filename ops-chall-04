@@ -1,0 +1,75 @@
+#!/bin/bash
+#
+# Author:  Ben_Podawiltz
+# Script:  ops-challenge-04
+# Revision:  4.26.21
+###########################
+
+# Purpose:  
+# Create a bash script that launches a menu system with the following options:
+# 1. Hello world (prints “Hello world!” to the screen)
+# 2. Ping self (pings this computer’s loopback address)
+# 3. IP info (print the network adapter information for this computer)
+# 4. Exit
+# 5. Next, the user input should be requested.
+# The program should next use a conditional statement to evaluate the user’s input, then act according to what the user selected.
+# Use a loop to bring up the menu again after the request has been executed.
+
+################################################
+
+# Globals:
+
+################################################
+run_process(){
+    while true  #Subsitutes for an input variable to always keep the loop running unless conditions are met
+    do
+        echo -e "\nPlease enter the number of the process you would like to run:
+*************************************************************
+
+        1. Hello World  
+        2. Ping loopback  
+        3. Ip information
+        4. Exit
+        "
+        read -r numb
+        #Start if-elif-else conditional logic
+        if (( $numb == 1 )); then  #Condition 1 value equals echo a string
+            echo "Hello World!"
+
+        elif (( $numb == 2 )); then  #Condition 2 value equals ping the localhost, test loopback connectivity
+            ping 127.0.0.1
+
+        elif (( $numb == 3 )); then #Condition 3 value equals netstat to print ip adaptor information then prompts for adaptor name for ip tool
+            netstat -i
+            echo -e "\nPlease enter adapter name to get additional information:
+********************************************************"
+            read -r adt
+            ip a s $adt
+            
+        elif (( $numb >= 4)); then  #Condition 4 value greater than or equal to 4 exits script
+        exit
+
+        fi
+    done
+}
+
+########################################
+
+# Call Functions:
+run_process
+
+########################################
+
+# Sources:
+# https://linuxhint.com/bash_conditional_statement/
+# https://linuxhandbook.com/bash-loops/
+# Hello World! Classic program first referenced in 1973 by Brian Kernigham's A turtorial to the introduction to the Programming Language B 
+# https://blog.hackerrank.com/the-history-of-hello-world/
+
+########################################
+
+# Summary:
+
+# I tried a couple different methods to build the script including an attempt to use until-do-done which did not initially work as I assigned until the condition of (( $numb >= 4)) to exit but it ran in a continous loop without pause for input. I would like to add additional ip tools to the #3 option. This script has a lot of potential for expansion. It would be cool to figure out how to have the user input sudo to add to tools built into the script.
+# 
+# End
