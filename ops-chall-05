@@ -1,0 +1,194 @@
+#!/bin/bash
+# Script Name:  ops-challenge-05
+# Author:  Ben_Podawiltz
+# Date of last revision:  4.29.21
+
+#################################
+
+# Description of purpose: Write a bash script that clears the contents of these logs:
+# /var/log/syslog
+# /var/log/wtmp
+# Print to screen the before and after of the contents of each file.
+
+#################################
+# Declaration of variables
+
+#################################
+# Declaration of functions
+
+#################################
+
+# Main
+run_process(){
+    while true  #Subsitutes for an input variable to always keep the loop running unless conditions are met
+    do
+        echo -e "\nPlease enter the number of the log you would like to clear:
+***********************************************************
+
+        1. auth.log
+        2. faillog  
+        3. lastlog  
+        4. messages 
+        5. syslog 
+        6. syslog.1 
+        7. wtmp  
+        8. Exit
+        "
+            
+        read -r numb
+        cd /var/log/
+
+        #Start if-elif-else conditional logic
+
+    if (( $numb == 1 )); then  #Condition 1 value equals echo a string
+                echo -e "***********Printing log****************"
+                    cat auth.log  #Contains authenticationlogs, including successful and failed logins
+                echo -e "\nWould you like to clear log? [y/n]:"
+                echo -e "\n*************************************"
+                    read -r input
+
+            if [ "$input" == "y" ]; then 
+            echo "" > auth.log
+            echo -e "\n********Printing Log...**************"
+                cat auth.log
+            echo -e "*******Log Cleared...***********"
+
+            elif [ "$input" == "n" ]; then
+            echo -e "\n************Clear Canceled***********"
+            else
+            echo "Incorrect input"
+            fi
+
+
+    elif (( $numb == 2 )); then 
+            echo -e "***********Printing log****************"
+                cat faillog #contains information on all failed login attempts
+            echo -e "\nWould you like to clear log? [y/n]:"
+            echo -e "\n*************************************"
+                read -r input
+
+            if [ "$input" == "y" ]; then 
+            echo "" > faillog
+            echo -e "\n********Printing Log...**************"
+                cat faillog
+            echo -e "*******Log Cleared...***********"
+
+            elif [ "$input" == "n" ]; then
+            echo -e "\n************Clear Canceled***********"
+            else
+            echo "Incorrect input"
+            fi
+
+    elif (( $numb == 3 )); then 
+            echo -e "***********Printing log****************"
+                cat lastlog  #contains information about current login state
+            echo -e "\nWould you like to clear log? [y/n]:"
+            echo -e "\n*************************************"
+            read -r input
+
+            if [ "$input" == "y" ]; then 
+            echo "" > lastlog
+            echo -e "\n********Printing Log...**************"
+                cat lastlog
+            echo -e "*******Log Cleared...***********"
+
+            elif [ "$input" == "n" ]; then
+            echo -e "\n************Clear Canceled***********"
+            else
+            echo "Incorrect input"
+            fi
+
+    elif (( $numb == 4 )); then 
+            echo -e "***********Printing log****************"
+                cat messages   #standard system log file in which various system applications and daemons record thier messages
+            echo -e "\nWould you like to clear log? [y/n]:"
+            echo -e "\n*************************************"
+            read -r input
+
+            if [ "$input" == "y" ]; then 
+            echo "" > messages
+            echo -e "\n********Printing Log...**************"
+            cat messages
+            echo -e "*******Log Cleared...***********"
+
+            elif [ "$input" == "n" ]; then
+            echo -e "\n************Clear Canceled***********"
+            else
+            echo "Incorrect input"
+            fi
+            
+    elif (( $numb == 5 )); then 
+            echo -e "***********Printing log****************"
+                cat syslog  #A messaging logging standard which holds data about status, events, diagnositics 
+            echo -e "\nWould you like to clear log? [y/n]:"
+            echo -e "\n*************************************"
+            read -r input
+
+            if [ "$input" == "y" ]; then 
+            echo "" > syslog
+            echo -e "\n********Printing Log...**************"
+            cat syslog
+            echo -e "*******Log Cleared...***********"
+
+            elif [ "$input" == "n" ]; then
+            echo -e "\n************Clear Canceled***********"
+            else
+            echo "Incorrect input"
+            fi
+            
+    elif (( $numb == 6 )); then 
+            echo -e "***********Printing log****************"
+                cat syslog.1  
+            echo -e "\nWould you like to clear log? [y/n]:"
+            echo -e "\n*************************************"
+            read -r input
+
+            if [ "$input" == "y" ]; then 
+            echo "" > syslog.1
+            echo -e "\n********Printing Log...**************"
+            cat syslog.1
+            echo -e "*******Log Cleared...***********"
+
+            elif [ "$input" == "n" ]; then
+            echo -e "\n************Clear Canceled***********"
+            else
+            echo "Incorrect input"
+            fi
+    elif (( $numb == 7 )); then 
+            echo -e "***********Printing log****************"
+                cat wtmp  #A file that keeps a history of all logins and logouts
+            echo -e "\nWould you like to clear log? [y/n]:"
+            echo -e "\n*************************************"
+            read -r input
+
+            if [ "$input" == "y" ]; then 
+            echo "" > wtmp
+            echo -e "\n********Printing Log...**************"
+            cat wtmp
+            echo -e "*******Log Cleared...***********"
+
+            elif [ "$input" == "n" ]; then
+            echo -e "\n************Clear Canceled***********"
+            else
+            echo "Incorrect input"
+            fi
+            
+
+        elif (( $numb >= 8)); then  #Condition 4 value greater than or equal to 4 exits script
+        exit
+
+        fi
+    done
+}
+
+#################
+
+# Call Function:
+
+run_process
+
+#################
+
+# Sources: https://stackify.com/linux-logs/
+
+## End
