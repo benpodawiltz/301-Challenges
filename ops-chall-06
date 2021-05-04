@@ -1,0 +1,58 @@
+#!/usr/bin/env python3
+# Script Name:  ops-challenge-06
+# Author:  Ben_Podawiltz
+# Date of last revision:  5.3.21
+
+#################################
+
+# Description of purpose: Create a Python script that executes a hardware spec-fetching script successfully. 
+
+# Requirements:
+
+# The Python library os must be utilized
+# At least three variables must be declared in Python that contain bash operations
+# The Python function print() must be used at least three times
+# Inlcude the following commands: whoami, lshw -short, ip a
+#
+
+#################################
+# Declaration of variables
+
+who = "whoami"
+ls = "lshw -short"
+ip = "ip a"
+# variables are declared, no additional commans to declare; variables cannot start with a number; case sensitive; ony alpha-numeric characters and underscores; no special characters
+
+#################################
+# Importing os module
+
+import os
+
+#################################
+
+# import subprocess
+
+#################################
+
+# Declaration of functions
+
+# subprocess.run(whoami; lshw -short; ip a) 
+# Could not find correct way to call three commands passed into subprocess. Nor could I utilize the variables assigned above to pass into subprocess. Work in progress...
+
+# Using os.system () method
+
+print ("Hello!")
+os.system(who)  # Each os.system() call creates a new shell process. Changing the directory inside these processes has no effect on the parent python process and therefore on the subsequent shell processes. To run multiple commands in the same shell instance, you could use subprocess module:
+os.system(ls)
+os.system(ip)
+
+##################################
+
+# Source: [https://www.edureka.co/blog/variables-and-data-types-in-python/#1 https://stackoverflow.com/questions/20042205/calling-multiple-commands-using-os-system-in-python]
+
+
+####################################
+
+# Comment: First python script! Spent a lot of time playing with basic tools but ulitmately did not incorporate. Struggled with how to call all three commands in one os.system() module. Ran into syntax errors. Most sources said it was best to use subprocess but again ran into syntax issues.
+
+# End
